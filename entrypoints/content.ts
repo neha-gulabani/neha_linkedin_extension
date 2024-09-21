@@ -139,7 +139,7 @@ export default defineContentScript({
           chatBox.scrollTop = chatBox.scrollHeight;
         }
 
-        // Add existing messages
+     
         addMessageToChatBox('You', textarea.value.trim());
         addMessageToChatBox('AI', generatedMessage);
 
@@ -224,14 +224,14 @@ export default defineContentScript({
             button.classList.add('magic-stick-button');
             box.parentElement?.appendChild(button);
 
-            // Prevent the button from being removed on button click
+           
             button.addEventListener('mousedown', (e) => {
-              e.stopPropagation(); // Prevent focusout event from being triggered
+              e.stopPropagation(); 
             });
           }
         });
 
-        // Hide the button when the message box loses focus using focusout
+
         box.addEventListener('focusout', (e) => {
           const focusEvent = e as FocusEvent
           const relatedTarget = focusEvent.relatedTarget as HTMLElement | null;
@@ -247,10 +247,10 @@ export default defineContentScript({
 
 
 
-    // Initial injection
+  
     injectMagicStickButton();
 
-    // Re-run the injection when the URL changes (for single-page apps)
+
     let lastUrl = location.href;
     new MutationObserver(() => {
       const url = location.href;
